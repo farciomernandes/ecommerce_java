@@ -14,6 +14,7 @@ public class Access implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_access")
     private Long id;
 
+    @Column(nullable = false)
     private String description; // Roles
 
     @Override
