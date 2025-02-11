@@ -1,5 +1,6 @@
 package ecommerce.free.model;
 
+import ecommerce.free.enums.AddressType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,10 +19,20 @@ public class Address implements Serializable {
 
     private String street;
     private String cep;
-    private String number;
     private String complement;
     private String uf;
     private String city;
+
+    @Enumerated(EnumType.STRING)
+    private AddressType addressType;
+
+    public AddressType getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(AddressType addressType) {
+        this.addressType = addressType;
+    }
 
     @ManyToOne(targetEntity = People.class)
     @JoinColumn(name = "people_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "people_fk"))
@@ -49,14 +60,6 @@ public class Address implements Serializable {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public String getComplement() {
