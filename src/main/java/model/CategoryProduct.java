@@ -1,18 +1,19 @@
 package model;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "brand_product")
-@SequenceGenerator(name = "seq_brand_product", sequenceName = "seq_brand_product", allocationSize = 1, initialValue = 1)
-public class BrandProduct implements Serializable {
+@Table(name = "category_product")
+@SequenceGenerator(name = "seq_category_product", sequenceName = "seq_category_product", allocationSize = 1, initialValue = 1)
+public class CategoryProduct implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category_product")
     private Long id;
 
     @Column(name = "name_description", nullable = false)
@@ -37,7 +38,7 @@ public class BrandProduct implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        BrandProduct that = (BrandProduct) o;
+        CategoryProduct that = (CategoryProduct) o;
         return Objects.equals(id, that.id);
     }
 
