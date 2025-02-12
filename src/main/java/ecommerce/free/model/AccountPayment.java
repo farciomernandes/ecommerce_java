@@ -12,7 +12,7 @@ import java.util.Objects;
 @Table(name = "account_payment")
 @SequenceGenerator(name = "seq_account_payment", sequenceName = "seq_account_payment", allocationSize = 1, initialValue = 1)
 public class AccountPayment implements Serializable {
-
+    // ContaPagar
     private static final long serialVersionUID = 1L;
 
     @Id
