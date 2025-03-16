@@ -18,13 +18,14 @@ public class CouponDiscount implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_coupon_discount")
     private Long id;
 
-    private String code;
+    @Column(nullable = false)
+    private String codeDescription;
 
     private BigDecimal discountValue;
     private BigDecimal discountPercentage;
 
     @Temporal(TemporalType.DATE)
-    private Date validityDate;
+    private Date expirationDate;
 
     public Long getId() {
         return id;
@@ -34,12 +35,12 @@ public class CouponDiscount implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getCodeDescription() {
+        return codeDescription;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCodeDescription(String codeDescription) {
+        this.codeDescription = codeDescription;
     }
 
     public BigDecimal getDiscountValue() {
@@ -58,12 +59,12 @@ public class CouponDiscount implements Serializable {
         this.discountPercentage = discountPercentage;
     }
 
-    public Date getValidityDate() {
-        return validityDate;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setValidityDate(Date validityDate) {
-        this.validityDate = validityDate;
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     @Override

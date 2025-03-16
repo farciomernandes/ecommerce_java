@@ -11,26 +11,37 @@ import java.util.Objects;
 @Table(name = "purchase_invoice")
 @SequenceGenerator(name = "seq_purchase_invoice", sequenceName = "seq_purchase_invoice", allocationSize = 1, initialValue = 1)
 public class PurchaseInvoice implements Serializable {
-    // Nota Fiscal
+    // NotaFiscalCompra
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_purchase_invoice")
     private Long id;
 
+
+    @Column(nullable = false)
     private String invoiceNumber;
+
+    @Column(nullable = false)
     private String invoiceSeries;
+
     private String descriptionNote;
+
+    @Column(nullable = false)
     private BigDecimal totalAmount;
+
     private BigDecimal discountAmount;
+
+    @Column(nullable = false)
     private BigDecimal icmsAmount;
 
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date purchaseDate;
 
     @ManyToOne(targetEntity = People.class)
-    @JoinColumn(name = "owner_id", nullable = false, foreignKey = @ForeignKey(
-            value = ConstraintMode.CONSTRAINT, name = "owner_fk"
+    @JoinColumn(name = "people_id", nullable = false, foreignKey = @ForeignKey(
+            value = ConstraintMode.CONSTRAINT, name = "people_fk"
     ))
     private People owner;
 

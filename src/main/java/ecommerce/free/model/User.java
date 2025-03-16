@@ -17,9 +17,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users")
     private Long id;
 
+
+    @Column(nullable = false)
     private String login;
+
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date actualDatePassword;
 
@@ -39,6 +44,12 @@ public class User implements UserDetails {
             )
     )
     private List<Access> accesses;
+
+    @ManyToOne(targetEntity = People.class)
+    @JoinColumn(name = "people_id", nullable = false, foreignKey = @ForeignKey(
+            value = ConstraintMode.CONSTRAINT, name = "people_fk"
+    ))
+    private People people;
 
 
     @Override

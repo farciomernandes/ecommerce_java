@@ -17,12 +17,26 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
     private Long id;
 
+    @Column(nullable = false)
     private String street;
+
+    @Column(nullable = false)
+    private Integer number;
+
+    @Column(nullable = false)
+    private String neighborhood;
+
+    @Column(nullable = false)
     private String cep;
     private String complement;
+
+    @Column(nullable = false)
     private String uf;
+
+    @Column(nullable = false)
     private String city;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AddressType addressType;
 
@@ -36,7 +50,7 @@ public class Address implements Serializable {
 
     @ManyToOne(targetEntity = People.class)
     @JoinColumn(name = "people_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "people_fk"))
-    private People people;
+    private People owner;
 
     public Long getId() {
         return id;
@@ -56,6 +70,22 @@ public class Address implements Serializable {
 
     public String getCep() {
         return cep;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
     }
 
     public void setCep(String cep) {
@@ -86,12 +116,12 @@ public class Address implements Serializable {
         this.city = city;
     }
 
-    public People getPeople() {
-        return people;
+    public People getOwner() {
+        return owner;
     }
 
-    public void setPeople(People people) {
-        this.people = people;
+    public void setOwner(People owner) {
+        this.owner = owner;
     }
 
     @Override

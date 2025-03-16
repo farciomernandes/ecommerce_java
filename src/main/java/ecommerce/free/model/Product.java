@@ -17,24 +17,41 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
     private Long id;
 
+    @Column(nullable = false)
     private String unitType;
+
+    @Column(nullable = false)
     private String name;
 
-    @Column(columnDefinition = "text", length = 2000)
+    @Column(columnDefinition = "text", length = 2000, nullable = false)
     private String description;
 
     // Nota Item Produto - ASSOCIAR
 
-    private Double weight;
+    // Atributos requeridos pelos correios
+    @Column(nullable = false)
+    private Double weight; // 1000.55 G - Peso
+    @Column(nullable = false)
     private Double width;
+    @Column(nullable = false)
     private Double height;
+    @Column(nullable = false)
     private Double depth;
+
+    @Column(nullable = false)
     private BigDecimal salePrice = BigDecimal.ZERO;
+
+    @Column(nullable = false)
     private Integer stock = 0;
+
     private Integer qtdStockAlert = 0;
+
     private String linkYoutube;
+
     private Boolean alertQtdStock = Boolean.FALSE;
+
     private Integer qtdClick = 0;
+
     private Boolean activated = Boolean.TRUE;
 
     public Boolean getActivated() {

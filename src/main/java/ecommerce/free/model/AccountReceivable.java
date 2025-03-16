@@ -1,7 +1,6 @@
 package ecommerce.free.model;
 
 import ecommerce.free.enums.AccountReceivableStatus;
-import ecommerce.free.enums.AddressType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -12,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "account_receivable")
 @SequenceGenerator(name = "seq_account_receivable", sequenceName = "seq_account_receivable", allocationSize = 1, initialValue = 1)
-public class AccounReceivable implements Serializable {
+public class AccountReceivable implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,17 +19,21 @@ public class AccounReceivable implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_account_receivable")
     private Long id;
 
+    @Column(nullable = false)
     private String description;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private AccountReceivableStatus status;
 
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date dueDate;
 
     @Temporal(TemporalType.DATE)
     private Date paymentDate;
 
+    @Column(nullable = false)
     private BigDecimal totalValue;
 
     private BigDecimal discountValue;
@@ -107,7 +110,7 @@ public class AccounReceivable implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        AccounReceivable address = (AccounReceivable) o;
+        AccountReceivable address = (AccountReceivable) o;
         return Objects.equals(id, address.id);
     }
 

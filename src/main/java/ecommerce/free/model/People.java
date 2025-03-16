@@ -17,11 +17,17 @@ public abstract class People implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_people")
     private Long id;
 
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String phone;
 
-    @OneToMany(mappedBy = "people", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "owner", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Address> addresses = new ArrayList<Address>();
 
     public List<Address> getAddresses() {

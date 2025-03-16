@@ -9,13 +9,13 @@ import java.util.Objects;
 @Table(name = "access")
 @SequenceGenerator(name = "seq_access", sequenceName = "seq_access", allocationSize = 1, initialValue = 1)
 public class Access implements GrantedAuthority {
-
+    // Roles
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_access")
     private Long id;
 
     @Column(nullable = false)
-    private String description; // Roles
+    private String description;
 
     @Override
     public String getAuthority() {

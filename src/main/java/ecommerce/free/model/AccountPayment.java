@@ -19,21 +19,26 @@ public class AccountPayment implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_account_payment")
     private Long id;
 
+    @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
     private BigDecimal totalValue;
 
     @Temporal(TemporalType.DATE)
     private Date paymentDate;
 
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date dueDate;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private PaymentAccountStatus status;
 
     @ManyToOne(targetEntity = People.class)
-    @JoinColumn(name = "owner_id", nullable = false, foreignKey = @ForeignKey(
-            value = ConstraintMode.CONSTRAINT, name = "owner_fk"
+    @JoinColumn(name = "people_id", nullable = false, foreignKey = @ForeignKey(
+            value = ConstraintMode.CONSTRAINT, name = "people_fk"
     ))
     private People owner;
 
