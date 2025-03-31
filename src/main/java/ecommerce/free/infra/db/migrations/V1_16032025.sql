@@ -1,4 +1,4 @@
-/** Cria triggers que valida pessoa
+/** Cria triggers que valida pessoa - Não necessário ao rodar V0.init
 CREATE OR REPLACE FUNCTION validatePeopleKey()
 RETURNS TRIGGER
 LANGUAGE plpgsql
